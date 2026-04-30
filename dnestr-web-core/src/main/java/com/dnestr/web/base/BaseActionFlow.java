@@ -6,11 +6,11 @@ import com.dnestr.web.interfaces.PageResolver;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public abstract class BaseActionFlow<P extends Enum<P> & AppPage, T extends BasePage> {
+public abstract class BaseActionFlow<P extends Enum<P> & AppPage> {
 
-    private final PageResolver<P, T> pageResolver;
+    private final PageResolver<P> pageResolver;
 
-    protected T resolve(P page) {
+    protected BasePage resolve(P page) {
         return pageResolver.resolvePage(page);
     }
 

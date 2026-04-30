@@ -15,12 +15,12 @@ import lombok.RequiredArgsConstructor;
 import java.util.function.BooleanSupplier;
 
 @RequiredArgsConstructor
-public abstract class BaseAssertionFlow<P extends Enum<P> & AppPage, T extends BasePage> {
+public abstract class BaseAssertionFlow<P extends Enum<P> & AppPage> {
 
-    private final PageResolver<P, T> pageResolver;
+    private final PageResolver<P> pageResolver;
     private final ElementActions elementActions;
 
-    protected T resolve(P page) {
+    protected BasePage resolve(P page) {
         return pageResolver.resolvePage(page);
     }
 

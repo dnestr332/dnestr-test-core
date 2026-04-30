@@ -2,7 +2,7 @@ package com.dnestr.web.interfaces;
 
 import com.dnestr.web.base.BasePage;
 
-public interface PageResolver<P extends Enum<P> & AppPage, T extends BasePage> {
+public interface PageResolver<P extends Enum<P> & AppPage> {
 
-    T resolvePage(P page);
+    BasePage resolvePage(P page);
 }
