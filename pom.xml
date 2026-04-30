@@ -7,7 +7,7 @@
 
     <groupId>com.github.dnestr332</groupId>
     <artifactId>dnestr-test-core</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <name>dnestr-test-core</name>
     <packaging>pom</packaging>
     <description>Multi-module test automation core (base, web, mobile)</description>
@@ -19,8 +19,7 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -120,5 +119,18 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <release>${maven.compiler.release}</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
