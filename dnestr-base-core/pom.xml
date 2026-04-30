@@ -8,11 +8,12 @@
     <parent>
         <groupId>com.github.dnestr332</groupId>
         <artifactId>dnestr-test-core</artifactId>
-        <version>1.0.6</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>dnestr-base-core</artifactId>
     <name>dnestr-base-core</name>
+    <packaging>jar</packaging>
     <description>Shared core utilities (assertions, utils, enums) for test automation frameworks</description>
 
     <dependencies>
