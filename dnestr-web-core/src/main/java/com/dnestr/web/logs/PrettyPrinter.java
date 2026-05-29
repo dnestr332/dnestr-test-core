@@ -1,6 +1,6 @@
 package com.dnestr.web.logs;
 
-import com.dnestr.core.base.BasePrettyPrinter;
+import com.dnestr.core.logs.BasePrettyPrinter;
 import com.microsoft.playwright.Locator;
 
 public class PrettyPrinter extends BasePrettyPrinter<Locator> {

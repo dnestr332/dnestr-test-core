@@ -1,7 +1,6 @@
 package com.dnestr.mobile.config;
 
 import com.dnestr.mobile.enums.MobilePlatform;
-import com.dnestr.mobile.interfaces.DriverConfig;
 import io.appium.java_client.ios.options.XCUITestOptions;
 
 import java.net.URL;

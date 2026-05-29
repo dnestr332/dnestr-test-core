@@ -1,6 +1,6 @@
 package com.dnestr.mobile.logs;
 
-import com.dnestr.core.base.BasePrettyPrinter;
+import com.dnestr.core.logs.BasePrettyPrinter;
 import org.openqa.selenium.By;
 
 public class PrettyPrinter extends BasePrettyPrinter<By> {

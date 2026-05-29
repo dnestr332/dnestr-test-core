@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import static com.dnestr.core.enums.ElementAction.*;
+import static com.dnestr.core.actions.ElementAction.*;
 
 @Slf4j
 @RequiredArgsConstructor

@@ -1,7 +1,6 @@
 package com.dnestr.mobile.actions;
 
-import com.dnestr.core.enums.ElementAction;
-import com.dnestr.mobile.enums.WaitStrategy;
+import com.dnestr.core.actions.ElementAction;
 import com.dnestr.mobile.logs.FailureCatcher;
 import com.dnestr.mobile.utils.MobileValidationUtils;
 import com.dnestr.mobile.utils.MobileElementUtils;
@@ -12,8 +11,8 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-import static com.dnestr.core.enums.ElementAction.*;
-import static com.dnestr.mobile.enums.WaitStrategy.*;
+import static com.dnestr.core.actions.ElementAction.*;
+import static com.dnestr.mobile.actions.ActionStrategy.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -24,7 +23,7 @@ public class ElementActions {
     private final FailureCatcher failureCatcher;
 
     //region FIND ELEMENT
-    public WebElement find(By locator, WaitStrategy strategy) {
+    public WebElement find(By locator, ActionStrategy strategy) {
         return failureCatcher.withFailureCapture(FIND, locator,
                 () -> {
                     switch (strategy) {
@@ -48,7 +47,7 @@ public class ElementActions {
     //endregion
 
     //region FIND LIST
-    public List<WebElement> findList(By locator, WaitStrategy strategy) {
+    public List<WebElement> findList(By locator, ActionStrategy strategy) {
         return failureCatcher.withFailureCapture(FIND_LIST, locator,
                 () -> {
                     switch (strategy) {
@@ -75,7 +74,7 @@ public class ElementActions {
     //endregion
 
     //region CLICK/TAP
-    public void click(By locator, WaitStrategy strategy) {
+    public void click(By locator, ActionStrategy strategy) {
         failureCatcher.withFailureCapture(CLICK, locator, () -> {
                     switch (strategy) {
                         case HARD_WAIT -> {
@@ -132,7 +131,7 @@ public class ElementActions {
         );
     }
 
-    public String text(By locator, WaitStrategy strategy) {
+    public String text(By locator, ActionStrategy strategy) {
         return failureCatcher.withFailureCapture(GET_TEXT, locator, () -> {
                     switch (strategy) {
                         case HARD_WAIT -> {
@@ -191,7 +190,7 @@ public class ElementActions {
     }
     //endregion
 
-    private void logFallback(ElementAction action, WaitStrategy strategy, By locator) {
+    private void logFallback(ElementAction action, ActionStrategy strategy, By locator) {
         log.warn("⚠ {} fallback used [{}] for {}", action, strategy, locator);
     }
 }

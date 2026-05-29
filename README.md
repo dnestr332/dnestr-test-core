@@ -35,3 +35,24 @@ mvn clean install -DskipTests
   ```bash
   mvn test -pl dnestr-base-core
   ```
+
+# 2.0.0
+
+## Breaking Changes
+
+### Base Core
+- Reorganized package structure
+- Added FieldState
+- Improved state handling
+
+### Web Core
+- BaseElement -> PageElement
+- BaseTableCell -> TableColumn
+- AppTable -> PageTable
+- Refactored assertion flows
+
+### Mobile Core
+- Reorganized package structure
+- Added AppAction
+- Moved MobilePlatform to enums
+- Improved flow architecture

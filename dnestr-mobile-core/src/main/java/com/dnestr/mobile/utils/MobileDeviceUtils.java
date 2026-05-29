@@ -1,7 +1,7 @@
 package com.dnestr.mobile.utils;
 
 import com.dnestr.mobile.context.TestContext;
-import com.dnestr.mobile.enums.AppAction;
+import com.dnestr.mobile.actions.AppAction;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.InteractsWithApps;
 import io.appium.java_client.android.AndroidDriver;

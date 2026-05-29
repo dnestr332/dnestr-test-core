@@ -1,7 +1,7 @@
 package com.dnestr.web.logs;
 
-import com.dnestr.core.base.BaseFailureCatcher;
-import com.dnestr.core.enums.ElementAction;
+import com.dnestr.core.logs.BaseFailureCatcher;
+import com.dnestr.core.actions.ElementAction;
 import com.microsoft.playwright.Locator;
 
 import java.util.function.Supplier;

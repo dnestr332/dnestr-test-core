@@ -1,7 +1,7 @@
 package com.dnestr.mobile.logs;
 
-import com.dnestr.core.base.BaseFailureCatcher;
-import com.dnestr.core.enums.ElementAction;
+import com.dnestr.core.logs.BaseFailureCatcher;
+import com.dnestr.core.actions.ElementAction;
 import org.openqa.selenium.By;
 
 import java.util.function.Supplier;

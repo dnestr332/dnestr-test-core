@@ -3,7 +3,7 @@ package com.dnestr.mobile.appium;
 import com.dnestr.mobile.config.AndroidConfig;
 import com.dnestr.mobile.config.IosConfig;
 import com.dnestr.mobile.enums.MobilePlatform;
-import com.dnestr.mobile.interfaces.DriverConfig;
+import com.dnestr.mobile.config.DriverConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;

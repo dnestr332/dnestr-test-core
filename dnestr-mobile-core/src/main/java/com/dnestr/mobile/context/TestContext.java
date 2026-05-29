@@ -1,5 +1,6 @@
 package com.dnestr.mobile.context;
 
+import com.dnestr.core.utils.EnumUtils;
 import com.dnestr.mobile.enums.MobilePlatform;
 
 public final class TestContext {
@@ -15,7 +16,7 @@ public final class TestContext {
             if (raw == null) throw new IllegalStateException("Platform is not defined");
 
             String actual = raw.substring(0, raw.indexOf("_"));
-            platform = MobilePlatform.valueOf(actual.toUpperCase());
+            platform = EnumUtils.parse(MobilePlatform.class, actual);
         }
         return platform;
     }
