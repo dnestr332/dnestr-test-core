@@ -1,10 +1,7 @@
 package com.dnestr.web.flows;
 
 import com.dnestr.core.assertions.Softly;
-import com.dnestr.core.states.AssertionState;
-import com.dnestr.core.states.ButtonState;
-import com.dnestr.core.states.FieldState;
-import com.dnestr.core.states.VisibleState;
+import com.dnestr.core.states.*;
 import com.dnestr.web.actions.ElementActions;
 import com.dnestr.web.assertions.Hardly;
 import com.dnestr.web.pages.AppPage;
@@ -75,6 +72,17 @@ public abstract class BaseAssertionFlow<P extends Enum<P> & AppPage> {
         };
 
         String msg = "%s should be %s".formatted(element, state.name().replace("_", " ").toLowerCase());
+        assertBool(assertion, condition, msg);
+    }
+
+    public void verifyToggleState(P page, PageElement element, AssertionState assertion, ToggleState state) {
+        Locator locator = resolve(page).locator(element);
+        BooleanSupplier condition = switch (state) {
+            case CHECKED -> locator::isChecked;
+            case UNCHECKED -> () -> !locator.isChecked();
+        };
+
+        String msg = "Toggle should be " + state.name().toLowerCase();
         assertBool(assertion, condition, msg);
     }
 
