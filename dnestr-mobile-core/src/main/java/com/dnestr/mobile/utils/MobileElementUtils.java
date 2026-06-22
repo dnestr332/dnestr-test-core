@@ -42,10 +42,4 @@ public class MobileElementUtils {
                 .map(String::trim)
                 .collect(Collectors.toList());
     }
-
-    public static double getStringAsDouble(String raw) {
-        Matcher matcher = Pattern.compile("\\d+(\\.\\d+)?").matcher(raw);
-        if (matcher.find()) return Double.parseDouble(matcher.group());
-        throw new IllegalArgumentException("No numeric value found in: " + raw);
-    }
 }

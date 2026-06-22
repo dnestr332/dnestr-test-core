@@ -8,4 +8,5 @@ public interface BaseContextResolver {
     String resolveExpectedValue(Object key, String value);
     int resolveRowIndex(String index);
     int resolveCountValue(String field);
+    String resolvePath(String path);
 }

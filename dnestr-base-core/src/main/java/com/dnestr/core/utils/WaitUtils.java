@@ -7,7 +7,7 @@ import java.time.Duration;
 import java.util.function.BooleanSupplier;
 
 @Slf4j
-public class WaitUtils {
+public final class WaitUtils {
 
     private WaitUtils() {}
 

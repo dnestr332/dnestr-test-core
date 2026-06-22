@@ -36,6 +36,7 @@ public class ElementActions {
     public void typeWithKeyboard(Locator locator, String text) {
         failureCatcher.withFailureCapture(TYPE, locator, text, () -> {
             locator.click();
+            locator.clear();
             page.keyboard().type(text);
         });
     }
@@ -57,7 +58,17 @@ public class ElementActions {
 
     public String text(Locator locator) {
         return failureCatcher.withFailureCapture(GET_TEXT, locator,
-                () -> locator.innerText()
+                () -> {
+                    String text = locator.innerText();
+                    if (text != null && !text.isBlank()) {
+                        return text.trim();
+                    }
+                    String value = locator.inputValue();
+                    if (value != null && !value.isBlank()) {
+                        return value.trim();
+                    }
+                    return "";
+                }
         );
     }
 
@@ -130,32 +141,27 @@ public class ElementActions {
         log.info("Waiting for DOM stability...");
 
         page.waitForFunction("""
-                    () => {
-                        return new Promise(resolve => {
-                            let timer;
-                
-                            const observer = new MutationObserver(() => {
-                                clearTimeout(timer);
-                                timer = setTimeout(() => {
-                                    observer.disconnect();
-                                    resolve(true);
-                                }, 400); // no DOM changes for 400ms
-                            });
-                
-                            observer.observe(document.body, {
-                                childList: true,
-                                subtree: true,
-                                attributes: true
-                            });
-                
-                            // fallback safety
-                            timer = setTimeout(() => {
-                                observer.disconnect();
-                                resolve(true);
-                            }, 3000);
-                        });
-                    }
-                """);
+        () => {
+            return new Promise(resolve => {
+                let timer;
+
+                const finish = (observer) => {
+                    observer.disconnect();
+                    resolve(true);
+                };
+                const observer = new MutationObserver(() => {
+                    clearTimeout(timer);
+                    timer = setTimeout(() => finish(observer), 400);
+                });
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true
+                });
+                timer = setTimeout(() => finish(observer), 400);
+            });
+        }
+    """);
     }
     //endregion
 }
