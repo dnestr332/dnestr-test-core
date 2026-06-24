@@ -141,27 +141,28 @@ public class ElementActions {
         log.info("Waiting for DOM stability...");
 
         page.waitForFunction("""
-        () => {
-            return new Promise(resolve => {
-                let timer;
-
-                const finish = (observer) => {
-                    observer.disconnect();
-                    resolve(true);
-                };
-                const observer = new MutationObserver(() => {
-                    clearTimeout(timer);
-                    timer = setTimeout(() => finish(observer), 400);
-                });
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true
-                });
-                timer = setTimeout(() => finish(observer), 400);
-            });
-        }
-    """);
+                () => {
+                    return new Promise(resolve => {
+                        let timer;
+                
+                        const finish = (observer) => {
+                            observer.disconnect();
+                            resolve(true);
+                        };
+                        const observer = new MutationObserver(() => {
+                            clearTimeout(timer);
+                            timer = setTimeout(() => finish(observer), 400);
+                        });
+                        observer.observe(document.body, {
+                            childList: true,
+                            subtree: true,
+                            attributes: true
+                        });
+                        timer = setTimeout(() => finish(observer), 400);
+                    });
+                }
+                """
+        );
     }
     //endregion
 }
